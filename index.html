@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280, initial-scale=0.3, maximum-scale=0.3, user-scalable=no, shrink-to-fit=yes">
+  <title>Shyamal - Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Merriweather&display=swap');
+
+    @font-face {
+      font-family: 'Nulshock';
+      src: url('https://fonts.cdnfonts.com/s/16404/Nulshock.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      /* 📱 Mobile Responsive Fix */
+      @media (max-width: 1280px) {
+        header {
+          flex-direction: column;
+          padding: 2rem 1rem;
+          min-height: auto;
+          text-align: center;
+        }
+
+        .intro-image {
+          position: static;
+          margin-top: 1rem;
+          text-align: center;
+        }
+
+        .profile-pic {
+          width: 200px;
+          margin: auto;
+        }
+
+        nav {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 10px;
+        }
+
+        nav a {
+          font-size: 14px;
+          margin: 6px;
+        }
+
+        .experience {
+          grid-template-columns: 1fr;
+        }
+
+        .experience .left-section {
+          text-align: center;
+          line-height: normal;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+
+        .experience-right h2 {
+          font-size: 1.6rem;
+        }
+
+        .experience-content h3 {
+          font-size: 1.2rem;
+        }
+
+        .experience-content p {
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+
+        .skill-bar img {
+          width: 24px;
+          height: 24px;
+        }
+
+        .skill-text {
+          font-size: 0.9rem;
+        }
+
+      }
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #00ffea;
+      color: #000000;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 3rem 0 3rem;
+      background: #ffdb58;
+      position: relative;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .intro-text {
+      max-width: 600px;
+      flex: 1;
+      text-align: left;
+    }
+
+    header h1 {
+      font-size: 4.5rem;
+      margin: 0;
+      color: #000000;
+      font-weight: 800;
+    }
+
+    .typing-wrapper {
+      font-size: 2.2rem;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      height: 2.6rem;
+    }
+
+    .typing {
+      color: #000000;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #000000;
+      display: inline-block;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink {
+
+      from,
+      to {
+        border-color: transparent;
+      }
+
+      50% {
+        border-color: #000000;
+      }
+    }
+
+    .intro-image {
+      position: absolute;
+      bottom: 0;
+      right: 5%;
+      /* ✅ push it to the right side */
+      transform: none;
+      /* remove the centering */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* keep image responsive */
+    .profile-pic {
+      width: clamp(260px, 36vw, 560px);
+      height: auto;
+      display: block;
+    }
+
+    .popup-message {
+      position: absolute;
+      top: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffeb3b;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      animation: fadeOut 5s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        display: none;
+      }
+    }
+
+    nav {
+      background: #000;
+      /* black bar */
+      padding: 15px 10%;
+      /* spacing like old style */
+      position: sticky;
+      /* stays at top after scroll */
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 1.8rem;
+      text-decoration: none;
+      color: #ffffff;
+      /* white links */
+      font-weight: bold;
+      position: sticky;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;
+      /* yellow hover */
+      background: none;
+      /* remove yellow box */
+      padding: 0;
+      /* no padding shift */
+    }
+
+
+    section {
+      padding: 2rem 3rem;
+      max-width: auto;
+      margin: auto;
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #000000;
+      font-size: 2.7rem;
+    }
+
+    .experience {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      background: #ffeb3b;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      align-items: start;
+    }
+
+    .experience .left-section {
+      background: #ffeb3b;
+      padding: 1rem;
+      display: flex;
+      line-height: 90px;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      height: auto;
+    }
+
+    .experience .left-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #000000;
+      margin: 0 0 1rem 0;
+    }
+
+    .about-description {
+      font-size: 1.1rem;
+      font-family: 'Merriweather', serif;
+      margin-top: 1rem;
+      line-height: 1.8;
+      color: #000000;
+    }
+
+    .experience-right {
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+    }
+
+    .experience-right h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      padding: 1.5rem 2rem 0 2rem;
+      background: #ffffff;
+      text-align: left;
+    }
+
+    .experience-content {
+      padding: 0 2rem 2rem 2rem;
+      background: #ffffff;
+    }
+
+    .experience-content h3 {
+      margin: 1rem 0 0.3rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .experience-content em {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-content p {
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .experience-content p {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+      }
+    }
+
+    /* Skills Section */
+    .skills {
+      padding: 0.5rem 0;
+      background: #ffffff;
+    }
+
+    .skills h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .skill-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-bar img {
+      width: 40px;
+      height: 40px;
+      margin-right: 1rem;
+    }
+
+    .bar {
+      flex: 1;
+      height: 12px;
+      background: #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #ffeb3b;
+      width: 0;
+      transition: width 2s ease-in-out;
+    }
+
+    .skill-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-left: 1rem;
+    }
+
+    .custom-image-block img {
+      width: 100%;
+      height: auto;
+      display: auto;
+      border-radius: 0px;
+    }
+
+    #projects .peerpe-gallery img {
+      width: 220px;
+      height: auto;
+      border-radius: 0;
+    }
+
+    #projects .design-showcase-title {
+      margin-left: 1rem;
+      align-items: center;
+    }
+
+    #projects .PeerPe-Comapany-designs {
+      margin-left: 0.9rem;
+      align-items: start;
+    }
+
+    /*custom infinte slow of image animation of peeerpe img */
+    #projects {
+      max-width: 100%;
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .slide-track {
+      display: flex;
+      animation: scroll 30s linear infinite;
+    }
+
+    .slide {
+      flex: 0 0 auto;
+      width: 300px;
+      /* adjust based on your design */
+      margin-right: 0px;
+    }
+
+    .slide img {
+      width: 100%;
+      display: block;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+        /* move one full set of slides */
+      }
+    }
+
+    .design-showcase-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+
+    .custom-image-block1 img {
+      width: 100%;
+      height: auto;
+      display: auto;
+      border-radius: 100px;
+    }
+
+    /* Reset / base hidden state */
+    /* Initial hidden state for experience & skills */
+    .experience-right .experience-content>* {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* Animate when visible */
+    .experience-right.in-view .experience-content>* {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger effect for smoother reveal */
+    .experience-right.in-view .experience-content>*:nth-child(1) {
+      transition-delay: 0.15s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(2) {
+      transition-delay: 0.30s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(3) {
+      transition-delay: 0.45s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(4) {
+      transition-delay: 0.60s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(5) {
+      transition-delay: 0.75s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(6) {
+      transition-delay: 0.90s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(7) {
+      transition-delay: 1.05s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(8) {
+      transition-delay: 1.20s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(9) {
+      transition-delay: 1.35s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(10) {
+      transition-delay: 1.35s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(11) {
+      transition-delay: 1.50s;
+    }
+
+    .experience-right.in-view .experience-content>*:nth-child(12) {
+      transition-delay: 1.65s;
+    }
+
+    /* .experience-right.in-view .experience-content>*:nth-child(13) {
+      transition-delay: 1.80s;
+    } */
+
+    /* Skill bars animation */
+    .skill-bar .bar-fill {
+      width: 0;
+      transition: width 1.2s ease-in-out;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(1) .bar-fill {
+      width: 80%;
+      transition-delay: 0.3s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(2) .bar-fill {
+      width: 70%;
+      transition-delay: 0.45s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(3) .bar-fill {
+      width: 85%;
+      transition-delay: 0.6s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(4) .bar-fill {
+      width: 60%;
+      transition-delay: 0.75s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(5) .bar-fill {
+      width: 65%;
+      transition-delay: 0.9s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(6) .bar-fill {
+      width: 40%;
+      transition-delay: 1.05s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(7) .bar-fill {
+      width: 90%;
+      transition-delay: 1.2s;
+    }
+
+    .experience-right.in-view .skill-bar:nth-child(8) .bar-fill {
+      width: 90%;
+      transition-delay: 1.35s;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="intro-text">
+      <h1>Hi, I'm Shyamal</h1>
+      <div class="typing-wrapper"><span class="typing" id="typing-text"></span></div>
+    </div>
+    <div class="intro-image">
+      <div class="popup-message">Please open it on desktop mode to get better view</div>
+      <img src="https://ik.imagekit.io/g8nndpy6v/shyamal.png?updatedAt=1756126638820" alt="Shyamal Photo"
+        class="profile-pic">
+    </div>
+  </header>
+
+  <nav>
+    <a href="#experience">Work Experiences</a>
+    <a href="#projects">Design Work</a>
+    <a href="#webshowcase">Web Development</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="experience" class="experience">
+    <div class="left-section">
+      <h2>About Me</h2>
+      <span class="about-description">I love working with graphics, UI/UX, and I’ve also started exploring web
+        development. I enjoy creating clean and modern designs, and I’m always curious about turning ideas into real,
+        user-friendly experiences. I’m still a beginner in web development, but I’m learning every day with the goal of
+        becoming a professional developer. Designing and building things that actually help people excites me the
+        most.</span>
+    </div>
+
+    </div>
+    <div class="experience-right">
+      <h2>Experience</h2>
+      <div class="experience-content">
+        <h3>Graphic Designer at PeerPe</h3>
+        <em>April 2025 – Present</em>
+        <p>Designing creative branding and social media content for an international money transfer platform. Working on
+          marketing campaigns, infographics, and digital posts to strengthen brand identity across platforms.</p>
+
+        <h3>Graphic Designer at GenZCash</h3>
+        <em>April 2025 – Present</em>
+        <p>Creating branding concepts and digital designs for a loyalty coin platform. Designing social media campaigns,
+          promotional creatives, and user-engagement content.</p>
+
+        <h3>Computer Hardware Intern – Under TRTC, At Bhuragaon College</h3>
+        <em>July 2025</em>
+        <p>Gained hands-on experience in computer assembly, troubleshooting, and hardware maintenance during a
+          semester-long internship program.</p>
+
+        <h3>Freelance Graphic Designer</h3>
+        <em>2023 – Present</em>
+        <p>Worked with individuals and small businesses to design posters, logos, social media content, and other
+          digital creatives. Specialized in producing clean, impactful designs tailored to client needs.</p>
+
+        <!-- Skills Section -->
+        <div class="skills">
+          <h2>Skills</h2>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/5968/5968522.png" alt="Adobe Illustrator">
+            <div class="bar">
+              <div class="bar-fill" style="width:80%"></div>
+            </div>
+            <span class="skill-text">Adobe Illustrator - 80%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/1/1984.png" alt="Adobe InDesign">
+            <div class="bar">
+              <div class="bar-fill" style="width:70%"></div>
+            </div>
+            <span class="skill-text">Adobe InDesign - 70%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/5968/5968572.png" alt="Adobe Photoshop">
+            <div class="bar">
+              <div class="bar-fill" style="width:85%"></div>
+            </div>
+            <span class="skill-text">Adobe Photoshop - 85%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/5968/5968474.png" alt="Adobe After Effects">
+            <div class="bar">
+              <div class="bar-fill" style="width:60%"></div>
+            </div>
+            <span class="skill-text">Adobe After Effects - 60%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/5968/5968575.png" alt="Adobe Premiere Pro">
+            <div class="bar">
+              <div class="bar-fill" style="width:65%"></div>
+            </div>
+            <span class="skill-text">Adobe Premiere Pro - 65%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/1051/1051328.png" alt="HTML Logo">
+            <div class="bar">
+              <div class="bar-fill" style="width:40%"></div>
+            </div>
+            <span class="skill-text">HTML (Beginner) - 40%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/15581/15581171.png" alt="Web Hosting">
+            <div class="bar">
+              <div class="bar-fill" style="width:90%"></div>
+            </div>
+            <span class="skill-text">Web Hosting - 90%</span>
+          </div>
+          <div class="skill-bar">
+            <img src="https://cdn-icons-png.flaticon.com/128/732/732070.png" alt="Microsoft Office">
+            <div class="bar">
+              <div class="bar-fill" style="width:90%"></div>
+            </div>
+            <span class="skill-text">Microsoft Office - 90%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="custom-image-block">
+    <img src="image/custom-image.png" alt="Custom Graphic">
+  </div>
+
+  <section id="projects">
+    <h2 class="design-showcase-title">DESIGN SHOWCASE</h2>
+    <h2 class="PeerPe-Comapany-designs">Creating Campaigns That Connect Users & Brands.</h2>
+    <div class="slider">
+      <div class="slide-track">
+        <div class="slide"><img src="image/PP1.png" alt=""></div>
+        <div class="slide"><img src="image/PP4.png" alt=""></div>
+        <div class="slide"><img src="image/PP2.png" alt=""></div>
+        <div class="slide"><img src="image/PP3.png" alt=""></div>
+        <div class="slide"><img src="image/PP5.png" alt=""></div>
+
+        <!-- duplicate set -->
+        <div class="slide"><img src="image/PP1.png" alt=""></div>
+        <div class="slide"><img src="image/PP4.png" alt=""></div>
+        <div class="slide"><img src="image/PP2.png" alt=""></div>
+        <div class="slide"><img src="image/PP3.png" alt=""></div>
+        <div class="slide"><img src="image/PP5.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="webshowcase">
+    <h2>Web Development Showcase</h2>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Let’s create something amazing together!</p>
+    <p>Email: <a href="mailto:sb6290081@gmail.com">sb6290081@gmail.com</a></p>
+    <p>Phone: <a href="tel:+916003117643">+91 6003117643</a></p>
+  </section>
+
+  <script>
+    const roles = ["Web Developer (Beginner)", "UI/UX Designer", "Graphic Designer"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let typingText = document.getElementById("typing-text");
+    let currentRole = "";
+    let isDeleting = false;
+
+    function typeEffect() {
+      if (!isDeleting && charIndex <= roles[roleIndex].length) {
+        currentRole = roles[roleIndex].substring(0, charIndex++);
+        typingText.textContent = currentRole;
+        setTimeout(typeEffect, 100);
+      } else if (isDeleting && charIndex >= 0) {
+        currentRole = roles[roleIndex].substring(0, charIndex--);
+        typingText.textContent = currentRole;
+        setTimeout(typeEffect, 60);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1000);
+        } else {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          setTimeout(typeEffect, 200);
+        }
+      }
+    }
+
+    // run typing effect
+    typeEffect();
+
+    // ✅ Intersection Observer for "Experience" animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const section = document.querySelector(".experience-right");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            section.classList.add("in-view");
+            // If you want it only once → comment out the else block below
+          } else {
+            section.classList.remove("in-view");
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+
+</html>
